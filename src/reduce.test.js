@@ -38,6 +38,19 @@ describe('reduce', () => {
     expect(callback).toHaveBeenCalledTimes(5);
   });
 
+  it(
+    'should call the callback n - 1'
+    + 'times when no initial value is provided',
+    () => {
+      const callback = jest.fn((acc, val) => acc + val);
+      const arr = [1, 2, 3, 4, 5];
+
+      arr.reduce2(callback);
+
+      expect(callback).toHaveBeenCalledTimes(4);
+    }
+  );
+
   it('should correctly concatenate strings', () => {
     const result = ['Hello', 'world', '!'].reduce2((acc, val) => acc + val, '');
 
